@@ -1,0 +1,38 @@
+logo = r'''
+                         ___________
+                         \         /
+                          )_______(
+                          |"""""""|_.-._,.---------.,_.-._
+                          |       | | |               | | ''-.
+                          |       |_| |_             _| |_..-'
+                          |_______| '-' `'---------'` '-'
+                          )"""""""(
+                         /_________\\
+                       .-------------.
+                      /_______________\\
+'''
+print(logo)
+print("Welcome to the Silent Auction!")
+name = input("What is your name? ")
+bid = input("What's your bid? $")
+
+auction = {
+    name: [bid]
+}
+
+go_again = input("Would you like to place another bid? Y or N? ")
+while go_again == "Y":
+    print("\n"* 1000)
+    name = input("What is your name? ")
+    bid = input("What's your bid? $")
+    auction[name] = [bid]
+    go_again = input("Would you like to place another bid? Y or N? ")
+if go_again == "N":
+    print("\n" * 1000)
+    print("The auction has ended")
+
+highest_bidder = max(auction, key=auction.get)
+highest_bid = max(auction.values())
+highest_edit = (" ".join(highest_bid))
+
+print(f"The winner is {highest_bidder} with a bid of ${highest_edit}")
