@@ -1,0 +1,122 @@
+logo = r"""
+ _____________________
+|  _________________  |
+| | Pythonista   0. | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
+|  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
+| | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
+| |___|___|___| |___| | | |  / .'   \_|  | || |    / /\ \    | || |    | |       | || |  / .'   \_|  | |
+| | 4 | 5 | 6 | | - | | | |  | |         | || |   / ____ \   | || |    | |   _   | || |  | |         | |
+| |___|___|___| |___| | | |  \ `.___.'\  | || | _/ /    \ \_ | || |   _| |__/ |  | || |  \ `.___.'\  | |
+| | 1 | 2 | 3 | | x | | | |   `._____.'  | || ||____|  |____|| || |  |________|  | || |   `._____.'  | |
+| |___|___|___| |___| | | |              | || |              | || |              | || |              | |
+| | . | 0 | = | | / | | | '--------------' || '--------------' || '--------------' || '--------------' |
+| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------' 
+|_____________________|
+"""
+
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1 * n2
+
+def divide(n1, n2):
+    return n1 / n2
+
+addition = add
+subtraction = subtract
+mult = multiply
+division = divide
+
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide,
+}
+def calculator():
+    print(logo)
+    should_accumulate = True
+    num1 = float(input("what is the first number?: "))
+
+
+    while should_accumulate:
+        for symbol in operations:
+            print(symbol)
+        operation_symbol = input("Pick and operation: ")
+        num2 = float(input("What is the next number?: "))
+        answer = operations[operation_symbol](num1,num2)
+        print(f"{num1} {operation_symbol} {num2} = {answer}")
+
+        choice = input(f"Type 'y' to continue calculating with {answer}, or type 'n' for a new calculation: ")
+
+        if choice == "y":
+            num1 = answer
+        else:
+            should_accumulate = False
+            print("\n" * 50)
+            calculator()
+
+calculator()
+
+
+
+
+
+############ My First Attempt #############
+
+# first_number = int(input("What's the first number?: "))
+# operation = input("+\n-\n*\n/\nPick an operation: ")
+# next_number = int(input("What's the next number?: "))
+# result = calculator["+" or "-" or "*" or "/"](first_number , next_number)
+# next_result = calculator["+" or "-" or "*" or "/"](result , next_number)
+# def calc_loop():
+# if operation == "+":
+#     print(f"{first_number} {operation} {next_number} = ", calculator["+"](first_number , next_number))
+# if operation == "-":
+#     print(f"{first_number} {operation} {next_number} = ", calculator["-"](first_number , next_number))
+# if operation == "*":
+#     print(f"{first_number} {operation} {next_number} = ", calculator["*"](first_number , next_number))
+# if operation == "/":
+#     print(f"{first_number} {operation} {next_number} = ", calculator["/"](first_number , next_number))
+#
+# choice = input(f"Press 'y' to continue calculating with {result}, or type 'n' to start a new calculation: ")
+# def yes_option():
+#     if choice == "y":
+#         operation = input("+\n-\n*\n/\nPick an operation: ")
+#         next_number = int(input("What's the next number?: "))
+#         if operation == "+":
+#             print(f"{result} {operation} {next_number} = ", calculator["+"](result, next_number))
+#         if operation == "-":
+#             print(f"{result} {operation} {next_number} = ", calculator["-"](result, next_number))
+#         if operation == "*":
+#             print(f"{result} {operation} {next_number} = ", calculator["*"](result, next_number))
+#         if operation == "/":
+#             print(f"{result} {operation} {next_number} = ", calculator["/"](result, next_number))
+#         input(f"Press 'y' to continue calculating with {result}, or type 'n' to start a new calculation: ")
+#
+#
+# previous_result = 0
+#
+# def no_option():
+#     if choice == "n":
+#         first_number = int(input("What's the first number?: "))
+#         operation = input("+\n-\n*\n/\nPick an operation: ")
+#         next_number = int(input("What's the next number?: "))
+#         if operation == "+":
+#             print(f"{first_number} {operation} {next_number} = ", calculator["+"](first_number, next_number))
+#         if operation == "-":
+#             print(f"{first_number} {operation} {next_number} = ", calculator["-"](first_number, next_number))
+#         if operation == "*":
+#             print(f"{first_number} {operation} {next_number} = ", calculator["*"](first_number, next_number))
+#         if operation == "/":
+#             print(f"{first_number} {operation} {next_number} = ", calculator["/"](first_number, next_number))
+#         input(f"Press 'y' to continue calculating with {result}, or type 'n' to start a new calculation: ")
+#
+#
+# yes_option()
+# no_option()
