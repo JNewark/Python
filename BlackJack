@@ -1,0 +1,70 @@
+logo = r"""
+.------.            _     _            _    _            _    
+|A_  _ |.          | |   | |          | |  (_)          | |   
+|( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+| \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+|  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
+`-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+      |  \/ K|                            _/ |                
+      `------'                           |__/           
+"""
+
+import random
+
+cards = [11 , 2 , 3 , 4 , 5, 6 , 7 , 8 , 9 , 10 , 10 , 10 , 10]
+user_cards = []
+computer_cards = []
+num_to_pick = 2
+player_hand = random.sample(cards , num_to_pick)
+dealer_upcard = random.choice(cards)
+dealer_downcard = random.choice(cards)
+dealer_hand = [dealer_upcard, dealer_downcard]
+dealer_total = sum(dealer_hand)
+card_total = sum(player_hand)
+additional_card = random.choice(cards)
+additional_card_2 = random.choice(cards)
+
+def random_card():
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    additional_card = random.choice(cards)
+    return additional_card
+
+
+print(logo)
+print(f" Your hand is {player_hand}, your current total is {card_total}")
+print(f"The Dealer's upcard is..{dealer_upcard}")
+
+while card_total <= 21:
+    decision = input("Would you like to Hit or Stay?: ")
+    if decision == "Hit" :
+        player_hand.append(additional_card)
+        card_total += additional_card
+        if additional_card == 11 and card_total >= 11:
+            card_total = (card_total - 10)
+        print(f" Your hand is {player_hand} your current total is {card_total}")
+        if card_total >= 22:
+            print("You Busted. Game Over. ")
+            break
+
+    if decision == "Stay":
+        print(f"Dealer has {dealer_hand} with a total of {dealer_total} ")
+        while dealer_total <= 17:
+            dealer_hand.append(additional_card)
+            dealer_total += additional_card
+            if additional_card == 11 and dealer_total >= 11:
+                dealer_total = (dealer_total - 10)
+            print(f"Dealer draws [{additional_card}], their total is {dealer_total}.")
+        if dealer_total >= 22:
+            print("Dealer Busts, You win!")
+            break
+        elif dealer_total > 17:
+            print("Dealer stops dealing...")
+            if dealer_total > card_total:
+                print("Dealer Wins.")
+                break
+            if dealer_total < card_total:
+                print("You win!")
+                break
+            if dealer_total == card_total:
+                print("Push")
+                break
