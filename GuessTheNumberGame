@@ -1,0 +1,53 @@
+logo = """  _______  __    __   _______     _______.     _______.   .___________. __    __   _______    .__   __.  __    __  .___  ___. .______    _______ .______      
+ /  _____||  |  |  | |   ____|   /       |    /       |   |           ||  |  |  | |   ____|   |  \ |  | |  |  |  | |   \/   | |   _  \  |   ____||   _  \     
+|  |  __  |  |  |  | |  |__     |   (----`   |   (----`   `---|  |----`|  |__|  | |  |__      |   \|  | |  |  |  | |  \  /  | |  |_)  | |  |__   |  |_)  |    
+|  | |_ | |  |  |  | |   __|     \   \        \   \           |  |     |   __   | |   __|     |  . `  | |  |  |  | |  |\/|  | |   _  <  |   __|  |      /     
+|  |__| | |  `--'  | |  |____.----)   |   .----)   |          |  |     |  |  |  | |  |____    |  |\   | |  `--'  | |  |  |  | |  |_)  | |  |____ |  |\  \----.
+ \______|  \______/  |_______|_______/    |_______/           |__|     |__|  |__| |_______|   |__| \__|  \______/  |__|  |__| |______/  |_______|| _| `._____|
+                                                                                                                                                              """
+
+#Player guesses won't stop at zero
+
+import random
+numbers = list(range(1,101))
+numbering = []
+random_number = (random.choice(numbers))
+player_guesses = 10
+hard_player_guesses = 5
+guess_counter = 0
+
+print(logo)
+print("Welcome to the Number Guessing Game!")
+print("I'm thinking of a number between 1 and 100...")
+difficulty = input("Choose a difficulty. Type 'Easy' or 'Hard': ")
+random.shuffle(numbers)
+
+def set_difficulty():
+    level = input("Choose a difficulty. Type 'easy' or 'hard': ")
+    if level == "easy":
+        return player_guesses
+
+    else:
+        return hard_player_guesses
+
+
+while True:
+    if difficulty == "Easy":
+        print(f"You have {player_guesses} attempts remaining to guess the number....")
+    if difficulty == "Hard":
+        print(f"You have {player_guesses - 5} attempts remaining to guess the number....")
+        player_number = int(input("Make a guess: "))
+        if player_guesses == 0:
+            print("Game Over")
+            break
+        if player_number < random_number:
+            print("Too Low")
+            player_guesses -= 1
+        if player_number > random_number:
+            print("Too High")
+            player_guesses -= 1
+        elif player_number == random_number:
+            print(f"You guessed {random_number} correctly! You Win!")
+            break
+
+
