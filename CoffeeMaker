@@ -1,0 +1,148 @@
+logo =""""   
+           /  ] /   \ |     ||     |/  _]  /  _]    |   |   | /    ||  |/ ]  /  _]|    \ 
+          /  / |     ||   __||   __/  [_  /  [_     | _   _ ||  o  ||  ' /  /  [_ |  D  )
+         /  /  |  O  ||  |_  |  |_|    _]|    _]    |  \_/  ||     ||    \ |    _]|    / 
+        /   \_ |     ||   _] |   _]   [_ |   [_     |   |   ||  _  ||     \|   [_ |    \ 
+        \     ||     ||  |   |  | |     ||     |    |   |   ||  |  ||  .  ||     ||  .  |
+         \____| \___/ |__|   |__| |_____||_____|    |___|___||__|__||__|\_||_____||__|\_|
+                                                                                 """
+
+
+
+
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+    "money" : 0
+}
+import time
+
+def coffee_cost():
+    global total_bill
+    quarters = .25
+    dimes = .10
+    nickels = .05
+    pennies = .01
+    quarterman = float(input(f"Your total is {total_bill}, how many Quarters({quarters}) will you enter? "))
+    dimeman = float(input(f"Dimes ({dimes})? "))
+    nickelman = float(input(f"Nickels ({nickels})? "))
+    pennyman = float(input(f"Pennies ({pennies})? "))
+    total_coins = (quarters * quarterman) + (dimes * dimeman) + (nickels * nickelman) + (pennies * pennyman)
+    print(f"You have inserted ${total_coins} ")
+    change = total_coins - total_bill
+    change_2 = total_bill - total_coins
+    if total_coins >= total_bill:
+        print(f"Enjoy your beverage, here's ${change} in change.")
+        return
+    while change_2 < total_bill:
+        quarterman_2 = float(input(f"You still owe {change_2}, how many Quarters({quarters}) will you enter? "))
+        if quarterman_2 >= 1:
+            change_2 -= (quarterman_2 * quarters)
+        dimeman_2 = float(input(f"Dimes ({dimes})? "))
+        if dimeman_2 >= 1:
+            change_2 -= (dimeman_2 * dimes)
+        nickelman_2 = float(input(f"Nickels ({nickels})? "))
+        if nickelman_2 >= 1:
+            change_2 -= (nickelman_2 * nickels)
+        pennyman_2 = float(input(f"Pennies ({pennies})? "))
+        if pennyman_2 >= 1:
+            change_2 -= (pennyman_2 * pennies)
+        if change_2 <= 0:
+            print(f"Enjoy your beverage, you have ${change_2 * -1} in change.")
+            break
+
+total_bill = 0
+water_amt = resources["water"]
+milk_amt = resources["milk"]
+coffee_amt = resources["coffee"]
+money_amt = resources["money"]
+
+print(logo)
+while True:
+    cust_choice = input("What would you like to order? (espresso/latte/cappuccino): ")
+
+    if cust_choice == "report":
+        print(f"Water: {water_amt}ml")
+        print(f"Milk: {milk_amt}ml")
+        print(f"Coffee: {coffee_amt}")
+        print(f"Money: {money_amt}")
+
+    if cust_choice == "off":
+        print("System Shutdown....")
+        time.sleep(3.0)
+        print("\n" * 1000)
+
+    if cust_choice == "espresso":
+        if water_amt < 50:
+            print("You do not have enough water")
+            break
+        if coffee_amt < 18:
+            print("You do not have enough coffee")
+            break
+        water_amt -= 50
+        coffee_amt -= 18
+        total_bill = 1.50
+        money_amt += 1.50
+        coffee_cost()
+
+    if cust_choice == "latte":
+        if water_amt < 200:
+            print("You do not have enough water")
+            break
+        if coffee_amt < 24:
+            print("You do not have enough coffee")
+            break
+        if milk_amt < 150:
+            print("You do not have enough milk")
+            break
+        water_amt -= 200
+        coffee_amt -= 24
+        milk_amt -= 150
+        total_bill = 2.50
+        money_amt += 2.50
+        coffee_cost()
+
+    if cust_choice == "cappuccino":
+        if water_amt < 250:
+            print("You do not have enough water")
+            break
+        if coffee_amt < 24:
+            print("You do not have enough coffee")
+            break
+        if milk_amt < 100:
+            print("You do not have enough milk")
+            break
+        water_amt -= 250
+        coffee_amt -= 24
+        milk_amt -= 100
+        total_bill = 3.00
+        money_amt += 3.00
+        coffee_cost()
+
