@@ -1,0 +1,78 @@
+
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+    "money" : 0
+}
+
+import time
+from menu import Menu
+from menu import MenuItem
+from coffee_maker import CoffeeMaker
+from money_machine import MoneyMachine
+
+# menu = Menu()
+# menu.find_drink("espresso")
+
+espresso = MenuItem("espresso", 50, 0, 18, 1.50)
+latte = MenuItem("Latte", 150, 150, 24, 2.50)
+cappuccino = MenuItem("cappuccino", 250, 100, 24, 3.00)
+
+menu1 = Menu()
+# menu1.get_items() #pulls menu
+
+coffee_test = CoffeeMaker()
+# coffee_test.report() #Total resources
+
+money = MoneyMachine()
+
+while True:
+    choice = input("What would you like? (Espresso, Latte, or Cappuccino): ")
+    if choice == "Off":
+        print("System Shutdown....")
+        time.sleep(3.0)
+        print("\n" * 1000)
+        break
+    if choice == "Report":
+        coffee_test.report()
+    if choice == "Cash Register":
+        money.report()
+    if choice == "Latte":
+        money.make_payment(2.50)
+        coffee_test.is_resource_sufficient(latte)
+        coffee_test.make_coffee(latte)
+    if choice == "Espresso":
+        money.make_payment(1.50)
+        coffee_test.is_resource_sufficient(espresso)
+        coffee_test.make_coffee(espresso)
+    if choice == "Cappuccino":
+        money.make_payment(3.00)
+        coffee_test.is_resource_sufficient(cappuccino)
+        coffee_test.make_coffee(cappuccino)
