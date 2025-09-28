@@ -67,12 +67,20 @@ while True:
     if choice == "Latte":
         money.make_payment(2.50)
         coffee_test.is_resource_sufficient(latte)
+        result3 = coffee_test.is_resource_sufficient(latte)
+        if result3 is False:
+            break
         coffee_test.make_coffee(latte)
     if choice == "Espresso":
         money.make_payment(1.50)
         coffee_test.is_resource_sufficient(espresso)
+        result2 = coffee_test.is_resource_sufficient(espresso)
+        if result2 is False:
+            break
         coffee_test.make_coffee(espresso)
     if choice == "Cappuccino":
         money.make_payment(3.00)
-        coffee_test.is_resource_sufficient(cappuccino)
+        result = coffee_test.is_resource_sufficient(cappuccino)
+        if result is False:
+            break
         coffee_test.make_coffee(cappuccino)
