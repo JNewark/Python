@@ -1,0 +1,89 @@
+import turtle
+from turtle import Turtle, Screen
+
+tim = Turtle()
+tim.shape("turtle")
+tim.color("blue", "green")
+
+
+tim.setpos(00,200)
+#triangle
+tim.forward(100)
+tim.right(120)
+tim.forward(200)
+tim.right(120)
+tim.forward(200)
+tim.right(120)
+tim.forward(200)
+#square
+tim.pencolor("red")
+tim.right(90)
+tim.forward(200)
+tim.right(90)
+tim.forward(200)
+tim.right(90)
+tim.forward(200)
+tim.right(90)
+tim.forward(200)
+#pentagon
+tim.pencolor("orange")
+tim.right(72)
+tim.forward(200)
+tim.right(72)
+tim.forward(200)
+tim.right(72)
+tim.forward(200)
+tim.right(72)
+tim.forward(200)
+tim.right(72)
+tim.forward(200)
+#hexagon
+tim.pencolor("yellow")
+tim.right(60)
+tim.forward(200)
+tim.right(60)
+tim.forward(200)
+tim.right(60)
+tim.forward(200)
+tim.right(60)
+tim.forward(200)
+tim.right(60)
+tim.forward(200)
+tim.right(60)
+tim.forward(200)
+#heptagon
+tim.pencolor("green")
+tim.right(51.4)
+tim.forward(200)
+tim.right(51.4)
+tim.forward(200)
+tim.right(51.4)
+tim.forward(200)
+tim.right(51.4)
+tim.forward(200)
+tim.right(51.4)
+tim.forward(200)
+tim.right(51.4)
+tim.forward(200)
+tim.right(51.4)
+tim.forward(200)
+#octagon
+tim.pencolor("blue")
+for _ in range(8):
+    tim.right(45)
+    tim.forward(200)
+#nonagon
+tim.pencolor("indigo")
+for _ in range(9):
+    tim.right(40)
+    tim.forward(200)
+#decagon
+tim.pencolor("violet")
+for _ in range(10):
+    tim.right(36)
+    tim.forward(200)
+
+
+
+screen = Screen()
+screen.exitonclick()
