@@ -1,0 +1,28 @@
+import random
+import turtle
+from turtle import Turtle, Screen
+
+turtle.colormode(255)
+tim = Turtle()
+tim.shape("turtle")
+tim.color("blue", "green")
+tim.speed("fastest")
+
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    random_color = (r, g, b)
+    return random_color
+
+
+for _ in range(100):
+    tim.color(random_color())
+    tim.circle(100)
+    tim.right(7.2)
+    tim.circle(100)
+
+
+
+screen = Screen()
+screen.exitonclick()
