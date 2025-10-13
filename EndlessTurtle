@@ -1,0 +1,28 @@
+import random
+import turtle
+from turtle import Turtle, Screen
+
+turtle.colormode(255)
+tim = Turtle()
+tim.shape("turtle")
+tim.color("blue", "green")
+tim.width(10)
+tim.speed("fast")
+
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    random_color = (r, g, b)
+    return random_color
+
+
+colors = ["red", "orange", "yellow", "green", "indigo", "blue", "violet" ]
+movements = [30]
+turns = [0,90,180,270]
+
+
+for _ in range(100):
+    tim.color(random_color())
+    tim.forward(random.choice(movements))
+    tim.right(random.choice(turns))
